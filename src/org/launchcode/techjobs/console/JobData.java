@@ -3,6 +3,8 @@ package org.launchcode.techjobs.console;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.apache.commons.lang3.StringUtils;
+
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,6 +12,8 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.ToDoubleBiFunction;
+
 
 /**
  * Created by LaunchCode
@@ -123,6 +127,28 @@ public class JobData {
             System.out.println("Failed to load job data");
             e.printStackTrace();
         }
+    }
+
+    //TODO
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+
+        // load data, if not already loaded
+        loadData();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            for (String name : row.values()){
+                System.out.println(name);
+                if (StringUtils.containsIgnoreCase(name, value)) {
+                    jobs.add(row);
+                }
+            }
+
+
+        }
+
+        return jobs;
     }
 
 }
