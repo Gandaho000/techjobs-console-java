@@ -80,7 +80,7 @@ public class JobData {
 
             String aValue = row.get(column);
 
-            if (aValue.contains(value)) {
+            if (StringUtils.containsIgnoreCase(aValue, value)) {
                 jobs.add(row);
             }
         }

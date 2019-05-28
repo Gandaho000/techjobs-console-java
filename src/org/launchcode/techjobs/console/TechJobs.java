@@ -121,6 +121,8 @@ public class TechJobs {
             System.out.println(name + " : " + item.get(name));
         }
         }
+
+        System.out.println(someJobs.size());
     }
 
 
